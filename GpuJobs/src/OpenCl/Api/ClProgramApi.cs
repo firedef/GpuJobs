@@ -24,5 +24,15 @@ namespace GpuJobs.OpenCl.Api {
 			IntPtr notificationCallback,
 			IntPtr userData
 		);
+		
+		[DllImport("OpenCL", EntryPoint = "clGetProgramBuildInfo")]
+		public static extern ClResult ClGetProgramBuildInfo(
+			IntPtr program,
+			IntPtr device,
+			ClProgramBuildInfo paramName,
+			UIntPtr paramValueSize,
+			byte[] paramValue,
+			out UIntPtr paramValueSizeRet
+		);
 	}
 }

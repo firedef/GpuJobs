@@ -95,4 +95,10 @@ namespace GpuJobs.OpenCl.Api {
 		// Errors thrown by Vendors
 		Nvidia_IllegalReadOrWriteToBuffer = -9999,
 	}
+
+	public static class ClResultCheck {
+		public static void CheckResult(this ClResult result, string errorMsg) {
+			if (result != ClResult.CL_SUCCESS) throw new ClException(errorMsg, result);
+		}
+	}
 }

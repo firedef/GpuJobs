@@ -18,7 +18,7 @@ namespace GpuJobs.OpenCl.Api {
 			IntPtr kernel,
 			uint argumentIndex,
 			UIntPtr argumentSize,
-			IntPtr* argumentValue
+			void** argumentValue
 		);
 		
 		[DllImport("OpenCL", EntryPoint = "clGetKernelInfo")]

@@ -1,4 +1,7 @@
+using System;
+
 namespace GpuJobs.OpenCl.Api {
+	[Flags]
 	public enum ClMemFlags {
 		CL_MEM_READ_WRITE = 1,
 		CL_MEM_WRITE_ONLY = 2,

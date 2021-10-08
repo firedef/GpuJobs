@@ -12,9 +12,10 @@
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
+        <PlatformTarget>x64</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
@@ -24,7 +25,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
+        <PlatformTarget>x64</PlatformTarget>
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\Release\</OutputPath>
@@ -51,8 +52,25 @@
         <Compile Include="src\OpenCl\Api\ClKernelInfo.cs" />
         <Compile Include="src\OpenCl\Api\ClMemApi.cs" />
         <Compile Include="src\OpenCl\Api\ClMemFlags.cs" />
+        <Compile Include="src\OpenCl\Api\ClPlatformApi.cs" />
         <Compile Include="src\OpenCl\Api\ClProgramApi.cs" />
+        <Compile Include="src\OpenCl\Api\ClProgramBuildInfo.cs" />
         <Compile Include="src\OpenCl\Api\ClResult.cs" />
+        <Compile Include="src\OpenCl\ClException.cs" />
+        <Compile Include="src\OpenCl\Core\ClBuffer.cs" />
+        <Compile Include="src\OpenCl\Core\ClCommandQueue.cs" />
+        <Compile Include="src\OpenCl\Core\ClContext.cs" />
+        <Compile Include="src\OpenCl\Core\ClDevice.cs" />
+        <Compile Include="src\OpenCl\Core\ClHandle.cs" />
+        <Compile Include="src\OpenCl\Core\ClKernel.cs" />
+        <Compile Include="src\OpenCl\Core\ClMemObject.cs" />
+        <Compile Include="src\OpenCl\Core\ClPlatform.cs" />
+        <Compile Include="src\OpenCl\Core\ClProgram.cs" />
+        <Compile Include="src\OpenCl\FrontEnd\OpenClCompute.cs" />
+        <Compile Include="src\OpenCl\FrontEnd\OpenClDevice.cs" />
+        <Compile Include="src\OpenCl\Utils\ByteTypeConverter.cs" />
+        <Compile Include="src\OpenCl\Utils\MemManager.cs" />
+        <Compile Include="tests\simple\OpenClTest_0.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

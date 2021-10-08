@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace GpuJobs.OpenCl.Api {
 	public static class ClMemApi {
 		[DllImport("OpenCL", EntryPoint = "clCreateBuffer")]
-		public static extern unsafe byte* ClCreateBuffer(
+		public static extern unsafe void* ClCreateBuffer(
 			IntPtr context,
 			ClMemFlags flags,
 			UIntPtr size,
