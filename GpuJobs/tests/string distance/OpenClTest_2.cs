@@ -20,7 +20,7 @@ namespace GpuJobs.tests.string_distance {
 
 			using ComputeDistance job = new(); // auto-dispose
 			ClBuffer<byte> stringsArr = job.device.AllocateOnHost<byte>(maxBlockSize * strCount);
-			ClBuffer<byte> targetStringArr = job.device.AllocateOnHost<byte>(targetString.Length + 100);
+			ClBuffer<byte> targetStringArr = job.device.AllocateOnHost<byte>(targetString.Length+1);
 
 			for (int i = 0; i < strCount; i++) {
 				int pos = i * maxBlockSize;
