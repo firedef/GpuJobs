@@ -10,6 +10,24 @@ namespace GpuJobs.OpenCl.Api {
 			out ClResult errorCode
 		);
 		
+		[DllImport("OpenCL", EntryPoint = "clReleaseKernel")]
+		public static extern ClResult ClReleaseKernel(IntPtr kernel);
 		
+		[DllImport("OpenCL", EntryPoint = "clSetKernelArg")]
+		public static extern unsafe ClResult ClSetKernelArg(
+			IntPtr kernel,
+			uint argumentIndex,
+			UIntPtr argumentSize,
+			IntPtr* argumentValue
+		);
+		
+		[DllImport("OpenCL", EntryPoint = "clGetKernelInfo")]
+		public static extern ClResult ClGetKernelInfo(
+			IntPtr kernel,
+			ClKernelInfo parameterName,
+			UIntPtr parameterValueSize,
+			byte[] parameterValue,
+			out UIntPtr parameterValueSizeReturned
+		);
 	}
 }
