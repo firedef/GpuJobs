@@ -9,5 +9,7 @@ namespace GpuJobs.OpenCl.Api {
 			[MarshalAs(UnmanagedType.LPStr)] string kernelName,
 			[Out] [MarshalAs(UnmanagedType.I4)] out int errorCode
 		);
+		
+		
 	}
 }
