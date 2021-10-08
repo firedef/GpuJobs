@@ -41,6 +41,7 @@
     <ItemGroup>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="src\OpenCl\Api\ClContextApi.cs" />
         <Compile Include="src\OpenCl\Api\ClDeviceApi.cs" />
         <Compile Include="src\OpenCl\Api\ClDeviceInfo.cs" />
         <Compile Include="src\OpenCl\Api\ClDeviceType.cs" />
