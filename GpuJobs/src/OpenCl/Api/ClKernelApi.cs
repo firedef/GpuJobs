@@ -6,8 +6,8 @@ namespace GpuJobs.OpenCl.Api {
 		[DllImport("OpenCL", EntryPoint = "clCreateKernel")]
 		public static extern IntPtr ClCreateKernel(
 			IntPtr program,
-			string kernelName,
-			out int errorCode
+			[MarshalAs(UnmanagedType.LPStr)] string kernelName,
+			out ClResult errorCode
 		);
 		
 		
