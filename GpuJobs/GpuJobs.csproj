@@ -46,6 +46,8 @@
         <Compile Include="src\OpenCl\Api\ClDeviceType.cs" />
         <Compile Include="src\OpenCl\Api\ClKernelApi.cs" />
         <Compile Include="src\OpenCl\Api\ClKernelInfo.cs" />
+        <Compile Include="src\OpenCl\Api\ClMemApi.cs" />
+        <Compile Include="src\OpenCl\Api\ClMemFlags.cs" />
         <Compile Include="src\OpenCl\Api\ClResult.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
