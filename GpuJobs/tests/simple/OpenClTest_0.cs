@@ -25,9 +25,7 @@ kernel void TestRun(global uchar* dest, global uchar* src) {
 			kernel.Run(device.cmdQueue, 1024);
 			arr_0.CopyFromDevice();
 			
-			for (int i = 0; i < 16; i++) {
-				Console.WriteLine(arr_0[i]);
-			}
+			for (int i = 0; i < 16; i++) { Console.WriteLine(arr_0[i]); }
 			
 			arr_0.Dispose();
 			arr_1.Dispose();

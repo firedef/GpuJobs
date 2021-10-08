@@ -76,6 +76,15 @@ namespace GpuJobs.OpenCl.Core {
 			buffer.AllocateOnHost();
 			return buffer;
 		}
+		
+		public static ClBuffer<T> AllocateOnHost<T>(this OpenClDevice device, int size, bool useHostPtr = false) where T : unmanaged {
+			ClBuffer<T> buffer = new ClBuffer<T> {
+				length = size, 
+				device = device
+			};
+			buffer.AllocateOnHost();
+			return buffer;
+		}
 	}
 	
 	[Flags]
