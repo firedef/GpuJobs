@@ -76,12 +76,14 @@ namespace GpuJobs.Jobs {
 					
 					if ((arg.flags & GpuJobArgFlags.Read) != 0) buffer.flags |= ClMemFlags.CL_MEM_READ_ONLY;
 					if ((arg.flags & GpuJobArgFlags.Write) != 0) buffer.flags |= ClMemFlags.CL_MEM_WRITE_ONLY;
-					if ((arg.flags & GpuJobArgFlags.ReadWrite) != 0) {
+					if ((arg.flags & GpuJobArgFlags.Read) != 0 && (arg.flags & GpuJobArgFlags.Write) != 0) {
 						buffer.flags &= ~ClMemFlags.CL_MEM_READ_ONLY;
 						buffer.flags &= ~ClMemFlags.CL_MEM_WRITE_ONLY;
 						buffer.flags |= ClMemFlags.CL_MEM_READ_WRITE;
 					}
-					if ((arg.flags & GpuJobArgFlags.AutoMemManagement) != 0 && !buffersAllocated) buffer.CopyToDevice();
+					if ((arg.flags & GpuJobArgFlags.AutoMemManagement) != 0 && !buffersAllocated) {
+						buffer.CopyToDevice();
+					}
 					kernel.SetKernelArg(arg.argId, buffer.handle);
 					continue;
 				}

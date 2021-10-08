@@ -57,12 +57,13 @@ namespace GpuJobs.OpenCl.Core {
 
 		public ClBuffer() : base(IntPtr.Zero) { }
 
+		public unsafe T* hostPtr => (T*) hostAllocation;
 		public int length;
 		public override unsafe int lengthInBytes => length * sizeof(T);
 		
 		public unsafe T this[int pos] {
-			get => ((T*) hostAllocation)[pos];
-			set => ((T*) hostAllocation)[pos] = value;
+			get => hostPtr[pos];
+			set => hostPtr[pos] = value;
 		}
 	}
 

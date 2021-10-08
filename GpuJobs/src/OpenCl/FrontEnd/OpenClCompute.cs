@@ -38,7 +38,10 @@ namespace GpuJobs.OpenCl.FrontEnd {
 		
 		public static OpenClDevice WaitForAvailableDeviceAndPop() {
 			while (true) {
-				if (!availableDevices.IsEmpty && availableDevices.TryDequeue(out int pos)) return devices[pos];
+				if (!availableDevices.IsEmpty && availableDevices.TryDequeue(out int pos)) {
+					devices[pos].isFree = false;
+					return devices[pos];
+				}
 				Thread.SpinWait(10);
 			}
 		}

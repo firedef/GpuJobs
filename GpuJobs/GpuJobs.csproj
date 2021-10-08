@@ -73,7 +73,11 @@
         <Compile Include="src\OpenCl\Utils\ByteTypeConverter.cs" />
         <Compile Include="src\OpenCl\Utils\MemManager.cs" />
         <Compile Include="tests\jobs\OpenClTest_1.cs" />
+        <Compile Include="tests\string distance\OpenClTest_2.cs" />
         <Compile Include="tests\simple\OpenClTest_0.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="tests\string distance\ComputeStringDistanceCl.cl" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

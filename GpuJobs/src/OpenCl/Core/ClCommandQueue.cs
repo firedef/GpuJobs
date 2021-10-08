@@ -11,7 +11,6 @@ namespace GpuJobs.OpenCl.Core {
 			int totalSize = elementSize * size;
 
 			IntPtr* waitEvent = stackalloc IntPtr[1];
-
 			ClCmdApi.ClEnqueueReadBuffer(handle, objHandle, wait ? 1u : 0u, UIntPtr.Zero, (UIntPtr) totalSize, trgt, 0, null, waitEvent)
 					.CheckResult($"EnqueueReadBuffer error");
 		}

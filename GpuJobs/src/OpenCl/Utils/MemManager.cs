@@ -23,6 +23,12 @@ namespace GpuJobs.OpenCl.Utils {
 		
 		[DllImport("kernel32.dll", EntryPoint = "GetProcessHeap")]
 		private static extern IntPtr _GetProcessHeap();
+		
+		[DllImport("msvcrt.dll", EntryPoint = "memset", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
+		public static extern void* MemSet(void* dest, int c, int length);
+		
+		[DllImport("msvcrt.dll", EntryPoint = "memcpy")]
+		public static extern void MemCpy(void* dest, void* src, IntPtr length);
 
 		public static Dictionary<IntPtr, int> allocations_heap = new();
 
