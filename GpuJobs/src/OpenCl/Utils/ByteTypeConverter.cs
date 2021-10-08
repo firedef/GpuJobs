@@ -22,18 +22,7 @@ namespace GpuJobs.OpenCl.Utils {
 		public static unsafe T AsEnum<T>(this byte[] data) where T : unmanaged, Enum {
 			Type baseType = Enum.GetUnderlyingType(typeof(T));
 
-			// if (baseType == typeof(byte)) return *(T*) data.AsU8();
-			// if (baseType == typeof(sbyte)) return *(T*) data.AsI8();
-			// if (baseType == typeof(ushort)) return *(T*) data.AsU16();
-			// if (baseType == typeof(short)) return *(T*) data.AsI16();
-			// if (baseType == typeof(uint)) return *(T*) data.AsU32();
-			// if (baseType == typeof(int)) return *(T*) data.AsI32();
-			// if (baseType == typeof(ulong)) return *(T*) data.AsU64();
-			// if (baseType == typeof(long)) return *(T*) data.AsI64();
-			// if (baseType == typeof(UIntPtr)) return *(T*) data.AsUIntPtr();
-			// if (baseType == typeof(IntPtr)) return *(T*) data.AsIntPtr();
-
-			long v = 0;
+			long? v = null;
 			if (baseType == typeof(byte)) v = data.AsU8();
 			else if (baseType == typeof(sbyte)) v = data.AsI8();
 			else if (baseType == typeof(ushort)) v = data.AsU16();
@@ -45,23 +34,25 @@ namespace GpuJobs.OpenCl.Utils {
 			else if (baseType == typeof(UIntPtr)) v = (long) data.AsUIntPtr();
 			else if (baseType == typeof(IntPtr)) v = (long) data.AsIntPtr();
 
-			return *(T*) &v;
+			if (v != null) return *(T*) &v;
 			
 			throw new IndexOutOfRangeException($"invalid enum type: {baseType.FullName}");
 		}
 		
 		public static unsafe T AsEnum<T>(this byte[] data, int size, bool signed) where T : unmanaged, Enum {
-			return (size, signed) switch {
-				(08, false) => *(T*) data.AsU8(), 
-				(08, true) => *(T*) data.AsI8(), 
-				(16, false) => *(T*) data.AsU16(), 
-				(16, true) => *(T*) data.AsI16(), 
-				(32, false) => *(T*) data.AsU32(), 
-				(32, true) => *(T*) data.AsI32(), 
-				(64, false) => *(T*) data.AsU64(), 
-				(64, true) => *(T*) data.AsI64(), 
+			long v = (size, signed) switch {
+				(08, false) => data.AsU8(), 
+				(08, true) => data.AsI8(), 
+				(16, false) => data.AsU16(), 
+				(16, true) => data.AsI16(), 
+				(32, false) => data.AsU32(), 
+				(32, true) => data.AsI32(), 
+				(64, false) => (long) data.AsU64(), 
+				(64, true) => data.AsI64(), 
 				_ => throw new IndexOutOfRangeException($"{size} must be power of 8/16/32/64")
 			};
+			
+			return *(T*) &v;
 		}
 	}
 }
